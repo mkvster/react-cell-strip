@@ -1,6 +1,6 @@
 # Cell Strip
 
-__COMPONENT DESCRIPTION GOES HERE__
+Strip of cells
 
 
 ## Demo & Examples
@@ -30,12 +30,15 @@ npm install react-cell-strip --save
 
 ## Usage
 
-__EXPLAIN USAGE HERE__
+
 
 ```
 var CellStrip = require('react-cell-strip');
 
-<CellStrip>Example</CellStrip>
+<CellStrip cellWidth={200} 
+	cellHeight={[50, [25,25]]}  
+	cellNumbers={[10, [20, 30]]} />
+
 ```
 
 ### Properties
@@ -44,7 +47,7 @@ var CellStrip = require('react-cell-strip');
 
 ### Notes
 
-__ADDITIONAL USAGE NOTES__
+
 
 
 ## Development (`src`, `lib` and the build process)
@@ -55,7 +58,5 @@ To build, watch and serve the examples (which will also watch the component sour
 
 ## License
 
-__PUT LICENSE HERE__
-
-Copyright (c) 2016 mkvster.
+[MIT License](http://en.wikipedia.org/wiki/MIT_License) Copyright (c) 2016 mkvster.
 
