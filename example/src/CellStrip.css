@@ -1,0 +1,119 @@
+﻿.cell-board-row-ul {
+    white-space: nowrap;
+    margin: 0;
+    padding: 0px;
+    list-style: none;
+    display: inline;
+    overflow: hidden;
+    /*float: left;*/
+}
+
+/*.cell-board-row-ul > li:first-child {
+    border-left: 1px solid black;
+}*/
+
+.cell-board-row-li {
+    /*height: 40px;
+    width: 100px;*/
+    /*border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: -1px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;*/
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0px;
+    float: left;
+}
+
+.cell-board-col-ul {
+    margin: 0;
+    padding: 0px;
+}
+
+.cell-board-col-li {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0px;
+    /*padding: 1px;
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 0px solid black;*/
+}
+
+/*.cell-board-col-ul > li:last-child {
+    border-bottom: 0px solid black;
+}
+
+ul.cell-board-row-ul:after {
+  clear: both;
+  display: block;
+  content: "";
+}
+
+ul.cell-board-col-ul:after {
+  clear: both;
+  display: block;
+  content: "";
+}*/
+
+.cell-board-container {
+    position: relative;
+}
+.cell-board-content {
+    /*border: 1px solid black;*/
+    /*border-left: 1px solid black;*/
+    /*border-top: 1px solid black;*/
+}
+/*.cell-board-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 4px solid black;
+    border-top: 4px solid black;
+}*/
+.cell-area {
+    padding: 2px;
+    border: 1px solid black;
+    /*border-bottom: 1px solid black;*/
+}
+
+/*.cell-area::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+}*/
+
+.cell-area-selected {
+    background-color: aqua;
+}
+
+.cell-content {
+}
+
+.cell-board-noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
