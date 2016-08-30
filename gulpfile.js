@@ -27,14 +27,14 @@ var taskConfig = {
 		dist: 'example/dist',
 		files: [
 			'index.html',
+			'cellstrip.css',
 			'.gitignore'
 		],
 		scripts: [
 			'example.js'
 		],
 		less: [
-			'example.less',
-			'cellstrip.css'
+			'example.less'
 		]
 	}
 

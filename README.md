@@ -35,7 +35,7 @@ npm install react-cell-strip --save
 ```
 var CellStrip = require('react-cell-strip');
 
-<CellStrip cellWidth={200} 
+<CellStrip cellWidth={200}
 	cellHeight={[50, [25,25]]}  
 	cellNumbers={[10, [20, 30]]} />
 
@@ -61,4 +61,3 @@ To build, watch and serve the examples (which will also watch the component sour
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License) Copyright (c) 2016 mkvster.
-
