@@ -43,7 +43,9 @@ var CellStrip = require('react-cell-strip');
 
 ### Properties
 
-* __DOCUMENT PROPERTIES HERE__
+* cellWidth
+* cellHeight
+* cellNumbers
 
 ### Notes
 
