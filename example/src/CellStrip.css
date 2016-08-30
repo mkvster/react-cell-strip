@@ -87,6 +87,9 @@ ul.cell-board-col-ul:after {
 .cell-area {
     padding: 2px;
     border: 1px solid black;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     /*border-bottom: 1px solid black;*/
 }
 
