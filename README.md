@@ -2,8 +2,7 @@
 
 React controll representing strip of cells
 
-See also: Angular project [cell-board](http://github.com/mkvster/cell-board/)
-[Angular project demo](http://mkvster.github.io/cell-board/)
+See also: Angular project [cell-board](http://github.com/mkvster/cell-board/) and [Angular project demo](http://mkvster.github.io/cell-board/)
 
 
 ## Demo & Examples
