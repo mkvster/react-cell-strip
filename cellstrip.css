@@ -93,6 +93,47 @@ ul.cell-board-col-ul:after {
     /*border-bottom: 1px solid black;*/
 }
 
+.cell-area-fancy {
+    padding: 2px;
+    border: 1px dotted blue;
+    background-color: lightgreen;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*border-bottom: 1px solid black;*/
+}
+
+.cell-area-modern {
+    padding: 2px;
+    border: solid 1px lightgray;
+    background-color: lightyellow;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*border-bottom: 1px solid black;*/
+}
+
+.cell-area-dark {
+    padding: 2px;
+    border: solid 1px black;
+    background-color: darkgray;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*border-bottom: 1px solid black;*/
+}
+
+.cell-number-modern {
+  font-weight: bold;
+  color: brown;
+}
+
+.cell-number-dark {
+  color: white;
+  text-shadow: 1px 1px red;
+  text-align: center;
+  padding:8px;
+}
 /*.cell-area::after {
     content: '';
     position: absolute;
