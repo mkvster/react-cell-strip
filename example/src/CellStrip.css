@@ -93,7 +93,7 @@ ul.cell-board-col-ul:after {
     /*border-bottom: 1px solid black;*/
 }
 
-.cell-area-fancy {
+.cell-strip-fancy .cell-area {
     padding: 2px;
     border: 1px dotted blue;
     background-color: lightgreen;
@@ -103,7 +103,7 @@ ul.cell-board-col-ul:after {
     /*border-bottom: 1px solid black;*/
 }
 
-.cell-area-modern {
+.cell-strip-modern .cell-area {
     padding: 2px;
     border: solid 1px lightgray;
     background-color: lightyellow;
@@ -113,7 +113,7 @@ ul.cell-board-col-ul:after {
     /*border-bottom: 1px solid black;*/
 }
 
-.cell-area-dark {
+.cell-strip-dark .cell-area {
     padding: 2px;
     border: solid 1px black;
     background-color: darkgray;
@@ -123,17 +123,18 @@ ul.cell-board-col-ul:after {
     /*border-bottom: 1px solid black;*/
 }
 
-.cell-number-modern {
+.cell-strip-modern .cell-number {
   font-weight: bold;
   color: brown;
 }
 
-.cell-number-dark {
+.cell-strip-dark .cell-number {
   color: white;
   text-shadow: 1px 1px red;
   text-align: center;
   padding:8px;
 }
+
 /*.cell-area::after {
     content: '';
     position: absolute;
