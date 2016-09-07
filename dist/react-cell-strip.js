@@ -12,9 +12,15 @@ var PlainCell = function PlainCell(cellAreaClassName, cellNumberClassName) {
     cellNumberClassName = cellNumberClassName || "cell-number";
     return React.createClass({
         render: function render() {
+            var isSelected = this.props.isSelected;
+            var cellClassName = "cell-strip-box " + cellAreaClassName;
+            if (isSelected) {
+                cellClassName = cellClassName + " cell-strip-cell-selected";
+            }
             return React.createElement(
                 "div",
-                { className: cellAreaClassName,
+                { className: cellClassName,
+                    onClick: this.props.onClick,
                     style: { width: this.props.width + "px",
                         height: this.props.height + "px" } },
                 React.createElement(
@@ -47,6 +53,24 @@ var CellStripTemplate = function CellStripTemplate(CellPresenter) {
         getHeight: function getHeight(index, subIndex) {
             return this.getSize(this.props.cellHeight, index, subIndex);
         },
+        getDefaultProps: function getDefaultProps() {
+            return {
+                context: null
+            };
+        },
+        clickHandler: function clickHandler(item) {
+            var context = this.props.context;
+            if (context && context.cellStripOwner && context.cellStripOwner.clickHandler) {
+                context.cellStripOwner.clickHandler(context, item);
+            }
+        },
+        getIsSelected: function getIsSelected(item) {
+            var context = this.props.context;
+            if (context && context.cellStripOwner && context.cellStripOwner.getIsSelected) {
+                return context.cellStripOwner.getIsSelected(context, item);
+            }
+            return false;
+        },
         render: function render() {
             var items = this.props.cellNumbers;
             var self = this;
@@ -59,7 +83,10 @@ var CellStripTemplate = function CellStripTemplate(CellPresenter) {
                         return React.createElement(
                             "li",
                             { key: subitem, className: "cell-board-col-li" },
-                            React.createElement(CellPresenter, { cellNumber: subitem, width: w, height: h })
+                            React.createElement(CellPresenter, {
+                                onClick: self.clickHandler.bind(self, subitem),
+                                isSelected: self.getIsSelected(subitem),
+                                cellNumber: subitem, width: w, height: h })
                         );
                     });
                     innerArea = React.createElement(
@@ -74,7 +101,10 @@ var CellStripTemplate = function CellStripTemplate(CellPresenter) {
                 } else {
                     var w = self.getWidth(index);
                     var h = self.getHeight(index);
-                    innerArea = React.createElement(CellPresenter, { cellNumber: item, width: w, height: h });
+                    innerArea = React.createElement(CellPresenter, {
+                        onClick: self.clickHandler.bind(self, item),
+                        isSelected: self.getIsSelected(item),
+                        cellNumber: item, width: w, height: h });
                 }
                 return React.createElement(
                     "li",

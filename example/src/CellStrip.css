@@ -93,6 +93,10 @@ ul.cell-board-col-ul:after {
     /*border-bottom: 1px solid black;*/
 }
 
+.cell-strip-cell-selected {
+    background-color: aqua;
+}
+
 .cell-strip-fancy .cell-area {
     padding: 2px;
     border: 1px dotted blue;
@@ -103,6 +107,31 @@ ul.cell-board-col-ul:after {
     /*border-bottom: 1px solid black;*/
 }
 
+.cell-strip-fancy .cell-area.cell-strip-cell-selected {
+    padding: 2px;
+    border: 1px dotted blue;
+    background-color: aqua;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: inset 3px 3px 20px 2px rgba(0,0,0,0.33);
+    -moz-box-shadow: inset 3px 3px 20px 2px rgba(0,0,0,0.33);
+    box-shadow: inset 3px 3px 20px 2px rgba(0,0,0,0.33);
+    /*border-bottom: 1px solid black;*/
+}
+
+.cell-strip-modern .cell-area.cell-strip-cell-selected {
+    padding: 2px;
+    border: solid 1px lightgray;
+    background-color: yellow;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: inset 3px 3px 20px 2px rgba(0,0,0,0.33);
+    -moz-box-shadow: inset 3px 3px 20px 2px rgba(0,0,0,0.33);
+    box-shadow: inset 3px 3px 20px 2px rgba(0,0,0,0.33);
+    /*border-bottom: 1px solid black;*/
+}
 .cell-strip-modern .cell-area {
     padding: 2px;
     border: solid 1px lightgray;
@@ -161,4 +190,10 @@ ul.cell-board-col-ul:after {
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Non-prefixed version, currently
                                   not supported by any browser */
+}
+
+.indicator {
+  padding: 10px;
+  background-color: lightgray;
+  border: 1px solid red;
 }
