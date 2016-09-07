@@ -8,38 +8,79 @@ var CellStrip = require('react-cell-strip').CellStrip;
 var App = React.createClass({
   displayName: 'App',
 
+  getInitialState: function getInitialState() {
+    return {
+      selectedItem: null
+    };
+  },
+  clickHandler: function clickHandler(context, item) {
+    this.setState({
+      selectedItem: item
+    });
+  },
+  getIsSelected: function getIsSelected(context, item) {
+    return this.state.selectedItem === item;
+  },
   render: function render() {
+    var context = {
+      cellStripOwner: this
+    };
     return React.createElement(
       'div',
-      { style: { width: 400 + "px", height: 1200 + "px" } },
-      React.createElement(CellStrip, { cellWidth: 100, cellHeight: 25,
-        cellNumbers: [61, 62, 63, 64] }),
-      React.createElement(CellStrip, { className: "cell-strip-fancy",
-        cellWidth: [50, 120, 150, 80],
-        cellHeight: [80, [30, 50], 80, [25, 25, 30]],
-        cellNumbers: [1, [2, 3], 4, [5, 6, 7]] }),
-      React.createElement(CellStrip, { cellWidth: [100, 50, 100, 150], cellHeight: 25,
-        cellNumbers: [8, 9, 10, 11] }),
-      React.createElement(CellStrip, { cellWidth: 200,
-        cellHeight: [50, [25, 25]],
-        cellNumbers: [12, [13, 14]] }),
-      React.createElement(CellStrip, { className: "cell-strip-modern",
-        cellWidth: [80, 100, 150, 70],
-        cellHeight: [[30, 30, 20], 80, [40, 40], 80],
-        cellNumbers: [[70, 65, 60], 55, [50, 45], 40] }),
-      React.createElement(CellStrip, { className: "cell-strip-fancy",
-        cellWidth: 100, cellHeight: 25,
-        cellNumbers: [110, 116, 525, 41] }),
-      React.createElement(CellStrip, { className: "cell-strip-dark",
-        cellWidth: [180, 50, 100], cellHeight: 40,
-        cellNumbers: ['Broken', 'In', 'Out'] }),
-      React.createElement(CellStrip, { cellWidth: [30, 40], cellHeight: [40, [20, 20]],
-        cellNumbers: [15, [16, 17]] })
+      null,
+      React.createElement(
+        'div',
+        { style: { width: "400px", height: "350px" } },
+        React.createElement(CellStrip, {
+          context: context,
+          cellWidth: 100, cellHeight: 25,
+          cellNumbers: [61, 62, 63, 64] }),
+        React.createElement(CellStrip, { className: "cell-strip-fancy",
+          context: context,
+          cellWidth: [50, 120, 150, 80],
+          cellHeight: [80, [30, 50], 80, [25, 25, 30]],
+          cellNumbers: [1, [2, 3], 4, [5, 6, 7]] }),
+        React.createElement(CellStrip, {
+          context: context,
+          cellWidth: [100, 50, 100, 150], cellHeight: 25,
+          cellNumbers: [8, 9, 10, 11] }),
+        React.createElement(CellStrip, {
+          context: context,
+          cellWidth: 200,
+          cellHeight: [50, [25, 25]],
+          cellNumbers: [12, [13, 14]] }),
+        React.createElement(CellStrip, { className: "cell-strip-modern",
+          context: context,
+          cellWidth: [80, 100, 150, 70],
+          cellHeight: [[30, 30, 20], 80, [40, 40], 80],
+          cellNumbers: [[70, 65, 60], 55, [50, 45], 40] }),
+        React.createElement(CellStrip, { className: "cell-strip-fancy",
+          context: context,
+          cellWidth: 100, cellHeight: 25,
+          cellNumbers: [110, 116, 525, 41] }),
+        React.createElement(CellStrip, { className: "cell-strip-dark",
+          cellWidth: [180, 50, 100], cellHeight: 40,
+          cellNumbers: ['Non-selectable', 'In', 'Out'] }),
+        React.createElement(CellStrip, {
+          context: context,
+          cellWidth: [30, 40], cellHeight: [40, [20, 20]],
+          cellNumbers: [15, [16, 17]] })
+      ),
+      React.createElement(
+        'div',
+        { className: 'indicator',
+          style: { width: "380px", height: "60px" } },
+        React.createElement(
+          'h1',
+          null,
+          'Selected Cell: ',
+          this.state.selectedItem
+        )
+      )
     );
   }
 });
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
-},{"react":undefined,"react-cell-strip":undefined,"react-dom":undefined}]},{},[1])
-//# sourceMappingURL=data:application/json;charset:utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vZGVfbW9kdWxlcy9icm93c2VyLXBhY2svX3ByZWx1ZGUuanMiLCJDOi9LL19EZXYvR2l0L3JlYWN0LWNlbGwtc3RyaXAvZXhhbXBsZS9zcmMvZXhhbXBsZS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7O0FDQUEsSUFBSSxLQUFLLEdBQUcsT0FBTyxDQUFDLE9BQU8sQ0FBQyxDQUFDO0FBQzdCLElBQUksUUFBUSxHQUFHLE9BQU8sQ0FBQyxXQUFXLENBQUMsQ0FBQztBQUNwQyxJQUFJLFNBQVMsR0FBRyxPQUFPLENBQUMsa0JBQWtCLENBQUMsQ0FBQyxTQUFTLENBQUM7O0FBRXRELElBQUksR0FBRyxHQUFHLEtBQUssQ0FBQyxXQUFXLENBQUM7OztBQUMxQixRQUFNLEVBQUMsa0JBQUc7QUFDUixXQUNFOztRQUFLLEtBQUssRUFBRSxFQUFDLEtBQUssRUFBRSxHQUFHLEdBQUcsSUFBSSxFQUFFLE1BQU0sRUFBRSxJQUFJLEdBQUUsSUFBSSxFQUFDLEFBQUM7TUFDbEQsb0JBQUMsU0FBUyxJQUFDLFNBQVMsRUFBRSxHQUFHLEFBQUMsRUFBQyxVQUFVLEVBQUUsRUFBRSxBQUFDO0FBQ3hDLG1CQUFXLEVBQUUsQ0FBQyxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLENBQUMsQUFBQyxHQUFHO01BQ25DLG9CQUFDLFNBQVMsSUFBQyxTQUFTLEVBQUUsa0JBQWtCLEFBQUM7QUFDdkMsaUJBQVMsRUFBRSxDQUFDLEVBQUUsRUFBRSxHQUFHLEVBQUUsR0FBRyxFQUFFLEVBQUUsQ0FBQyxBQUFDO0FBQzlCLGtCQUFVLEVBQUUsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxFQUFFLEVBQUUsRUFBRSxDQUFDLEVBQUUsRUFBRSxFQUFFLENBQUMsRUFBRSxFQUFDLEVBQUUsRUFBQyxFQUFFLENBQUMsQ0FBQyxBQUFDO0FBQzNDLG1CQUFXLEVBQUUsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQyxBQUFDLEdBQUc7TUFDNUMsb0JBQUMsU0FBUyxJQUFDLFNBQVMsRUFBRSxDQUFDLEdBQUcsRUFBRSxFQUFFLEVBQUUsR0FBRyxFQUFFLEdBQUcsQ0FBQyxBQUFDLEVBQUMsVUFBVSxFQUFFLEVBQUUsQUFBQztBQUN4RCxtQkFBVyxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxFQUFFLEVBQUUsRUFBRSxDQUFDLEFBQUMsR0FBRztNQUNqQyxvQkFBQyxTQUFTLElBQUMsU0FBUyxFQUFFLEdBQUcsQUFBQztBQUN4QixrQkFBVSxFQUFFLENBQUMsRUFBRSxFQUFFLENBQUMsRUFBRSxFQUFDLEVBQUUsQ0FBQyxDQUFDLEFBQUM7QUFDMUIsbUJBQVcsRUFBRSxDQUFDLEVBQUUsRUFBRSxDQUFDLEVBQUUsRUFBRSxFQUFFLENBQUMsQ0FBQyxBQUFDLEdBQUc7TUFDakMsb0JBQUMsU0FBUyxJQUFDLFNBQVMsRUFBRSxtQkFBbUIsQUFBQztBQUN4QyxpQkFBUyxFQUFFLENBQUMsRUFBRSxFQUFFLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRSxDQUFDLEFBQUM7QUFDOUIsa0JBQVUsRUFBRSxDQUFDLENBQUMsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLENBQUMsRUFBRSxFQUFFLEVBQUUsQ0FBQyxFQUFFLEVBQUMsRUFBRSxDQUFDLEVBQUUsRUFBRSxDQUFDLEFBQUM7QUFDNUMsbUJBQVcsRUFBRSxDQUFDLENBQUMsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLENBQUMsRUFBRSxFQUFFLEVBQUUsQ0FBQyxFQUFFLEVBQUUsRUFBRSxDQUFDLEVBQUUsRUFBRSxDQUFDLEFBQUMsR0FBRztNQUNuRCxvQkFBQyxTQUFTLElBQUMsU0FBUyxFQUFFLGtCQUFrQixBQUFDO0FBQ3ZDLGlCQUFTLEVBQUUsR0FBRyxBQUFDLEVBQUMsVUFBVSxFQUFFLEVBQUUsQUFBQztBQUMvQixtQkFBVyxFQUFFLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRSxDQUFDLEFBQUMsR0FBRztNQUN0QyxvQkFBQyxTQUFTLElBQUMsU0FBUyxFQUFFLGlCQUFpQixBQUFDO0FBQ3RDLGlCQUFTLEVBQUUsQ0FBQyxHQUFHLEVBQUUsRUFBRSxFQUFFLEdBQUcsQ0FBQyxBQUFDLEVBQUMsVUFBVSxFQUFFLEVBQUUsQUFBQztBQUMxQyxtQkFBVyxFQUFFLENBQUMsUUFBUSxFQUFFLElBQUksRUFBRSxLQUFLLENBQUMsQUFBQyxHQUFHO01BQzFDLG9CQUFDLFNBQVMsSUFBQyxTQUFTLEVBQUUsQ0FBQyxFQUFFLEVBQUUsRUFBRSxDQUFDLEFBQUMsRUFBQyxVQUFVLEVBQUUsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxFQUFFLEVBQUUsRUFBRSxDQUFDLENBQUMsQUFBQztBQUN6RCxtQkFBVyxFQUFFLENBQUMsRUFBRSxFQUFDLENBQUMsRUFBRSxFQUFDLEVBQUUsQ0FBQyxDQUFDLEFBQUMsR0FBRztLQUMzQixDQUNOO0dBQ0g7Q0FDRixDQUFDLENBQUM7O0FBRUgsUUFBUSxDQUFDLE1BQU0sQ0FBQyxvQkFBQyxHQUFHLE9BQUcsRUFBRSxRQUFRLENBQUMsY0FBYyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMiLCJmaWxlIjoiZ2VuZXJhdGVkLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXNDb250ZW50IjpbIihmdW5jdGlvbiBlKHQsbixyKXtmdW5jdGlvbiBzKG8sdSl7aWYoIW5bb10pe2lmKCF0W29dKXt2YXIgYT10eXBlb2YgcmVxdWlyZT09XCJmdW5jdGlvblwiJiZyZXF1aXJlO2lmKCF1JiZhKXJldHVybiBhKG8sITApO2lmKGkpcmV0dXJuIGkobywhMCk7dmFyIGY9bmV3IEVycm9yKFwiQ2Fubm90IGZpbmQgbW9kdWxlICdcIitvK1wiJ1wiKTt0aHJvdyBmLmNvZGU9XCJNT0RVTEVfTk9UX0ZPVU5EXCIsZn12YXIgbD1uW29dPXtleHBvcnRzOnt9fTt0W29dWzBdLmNhbGwobC5leHBvcnRzLGZ1bmN0aW9uKGUpe3ZhciBuPXRbb11bMV1bZV07cmV0dXJuIHMobj9uOmUpfSxsLGwuZXhwb3J0cyxlLHQsbixyKX1yZXR1cm4gbltvXS5leHBvcnRzfXZhciBpPXR5cGVvZiByZXF1aXJlPT1cImZ1bmN0aW9uXCImJnJlcXVpcmU7Zm9yKHZhciBvPTA7bzxyLmxlbmd0aDtvKyspcyhyW29dKTtyZXR1cm4gc30pIiwidmFyIFJlYWN0ID0gcmVxdWlyZSgncmVhY3QnKTtcbnZhciBSZWFjdERPTSA9IHJlcXVpcmUoJ3JlYWN0LWRvbScpO1xudmFyIENlbGxTdHJpcCA9IHJlcXVpcmUoJ3JlYWN0LWNlbGwtc3RyaXAnKS5DZWxsU3RyaXA7XG5cbnZhciBBcHAgPSBSZWFjdC5jcmVhdGVDbGFzcyh7XG4gIHJlbmRlciAoKSB7XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgc3R5bGU9e3t3aWR0aDogNDAwICsgXCJweFwiLCBoZWlnaHQ6IDEyMDAgK1wicHhcIn19PlxuICAgICAgICA8Q2VsbFN0cmlwIGNlbGxXaWR0aD17MTAwfSBjZWxsSGVpZ2h0PXsyNX1cbiAgICAgICAgICBjZWxsTnVtYmVycz17WzYxLCA2MiwgNjMsIDY0XX0gLz5cbiAgICAgICAgPENlbGxTdHJpcCBjbGFzc05hbWU9e1wiY2VsbC1zdHJpcC1mYW5jeVwifVxuICAgICAgICAgIGNlbGxXaWR0aD17WzUwLCAxMjAsIDE1MCwgODBdfVxuICAgICAgICAgIGNlbGxIZWlnaHQ9e1s4MCwgWzMwLCA1MF0sIDgwLCBbMjUsMjUsMzBdXX1cbiAgICAgICAgICBjZWxsTnVtYmVycz17WzEsIFsyLCAzXSwgNCwgWzUsIDYsIDddXX0gLz5cbiAgICAgICAgPENlbGxTdHJpcCBjZWxsV2lkdGg9e1sxMDAsIDUwLCAxMDAsIDE1MF19IGNlbGxIZWlnaHQ9ezI1fVxuICAgICAgICAgIGNlbGxOdW1iZXJzPXtbOCwgOSwgMTAsIDExXX0gLz5cbiAgICAgICAgPENlbGxTdHJpcCBjZWxsV2lkdGg9ezIwMH1cbiAgICAgICAgICBjZWxsSGVpZ2h0PXtbNTAsIFsyNSwyNV1dfVxuICAgICAgICAgIGNlbGxOdW1iZXJzPXtbMTIsIFsxMywgMTRdXX0gLz5cbiAgICAgICAgPENlbGxTdHJpcCBjbGFzc05hbWU9e1wiY2VsbC1zdHJpcC1tb2Rlcm5cIn1cbiAgICAgICAgICBjZWxsV2lkdGg9e1s4MCwgMTAwLCAxNTAsIDcwXX1cbiAgICAgICAgICBjZWxsSGVpZ2h0PXtbWzMwLCAzMCwgMjBdLCA4MCwgWzQwLDQwXSwgODBdfVxuICAgICAgICAgIGNlbGxOdW1iZXJzPXtbWzcwLCA2NSwgNjBdLCA1NSwgWzUwLCA0NV0sIDQwXX0gLz5cbiAgICAgICAgPENlbGxTdHJpcCBjbGFzc05hbWU9e1wiY2VsbC1zdHJpcC1mYW5jeVwifVxuICAgICAgICAgIGNlbGxXaWR0aD17MTAwfSBjZWxsSGVpZ2h0PXsyNX1cbiAgICAgICAgICBjZWxsTnVtYmVycz17WzExMCwgMTE2LCA1MjUsIDQxXX0gLz5cbiAgICAgICAgPENlbGxTdHJpcCBjbGFzc05hbWU9e1wiY2VsbC1zdHJpcC1kYXJrXCJ9XG4gICAgICAgICAgY2VsbFdpZHRoPXtbMTgwLCA1MCwgMTAwXX0gY2VsbEhlaWdodD17NDB9XG4gICAgICAgICAgY2VsbE51bWJlcnM9e1snQnJva2VuJywgJ0luJywgJ091dCddfSAvPlxuICAgICAgICA8Q2VsbFN0cmlwIGNlbGxXaWR0aD17WzMwLCA0MF19IGNlbGxIZWlnaHQ9e1s0MCwgWzIwLCAyMF1dfVxuICAgICAgICAgIGNlbGxOdW1iZXJzPXtbMTUsWzE2LDE3XV19IC8+XG4gICAgICA8L2Rpdj5cbiAgICApO1xuICB9XG59KTtcblxuUmVhY3RET00ucmVuZGVyKDxBcHAgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKSk7XG4iXX0=
+},{"react":undefined,"react-cell-strip":undefined,"react-dom":undefined}]},{},[1]);

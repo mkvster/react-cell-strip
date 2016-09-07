@@ -5,8 +5,14 @@ var PlainCell = function(cellAreaClassName, cellNumberClassName) {
     cellNumberClassName = cellNumberClassName || "cell-number";
     return React.createClass({
         render: function() {
+            var isSelected = this.props.isSelected;
+            var cellClassName = "cell-strip-box " + cellAreaClassName;
+            if (isSelected) {
+                cellClassName = cellClassName + " cell-strip-cell-selected";
+            }
             return (
-                <div className={cellAreaClassName}
+                <div className={cellClassName}
+                    onClick={this.props.onClick}
                     style={{width: this.props.width + "px",
                       height: this.props.height + "px"}}>
                     <div className={cellNumberClassName}>
@@ -38,6 +44,30 @@ var CellStripTemplate = function(CellPresenter) {
         getHeight: function(index, subIndex) {
             return this.getSize(this.props.cellHeight, index, subIndex);
         },
+        getDefaultProps: function() {
+            return {
+                context: null
+            };
+        },
+        clickHandler: function(item) {
+            var context = this.props.context;
+            if (context
+                && context.cellStripOwner
+                && context.cellStripOwner.clickHandler)
+            {
+                context.cellStripOwner.clickHandler(context, item);
+            }
+        },
+        getIsSelected: function(item) {
+            var context = this.props.context;
+            if (context
+                && context.cellStripOwner
+                && context.cellStripOwner.getIsSelected)
+            {
+                return context.cellStripOwner.getIsSelected(context, item);
+            }
+            return false;
+        },
         render: function() {
             var items = this.props.cellNumbers;
             var self = this;
@@ -49,7 +79,10 @@ var CellStripTemplate = function(CellPresenter) {
                     var h = self.getHeight(index, subIndex);
                     return (
                         <li key={subitem} className="cell-board-col-li">
-                            <CellPresenter cellNumber={subitem} width={w} height={h} />
+                            <CellPresenter
+                              onClick={self.clickHandler.bind(self, subitem)}
+                              isSelected={self.getIsSelected(subitem)}
+                              cellNumber={subitem} width={w} height={h} />
                         </li>
                     );
                 });
@@ -65,7 +98,10 @@ var CellStripTemplate = function(CellPresenter) {
                 var w = self.getWidth(index);
                 var h = self.getHeight(index);
                 innerArea = (
-                    <CellPresenter cellNumber={item} width={w} height={h} />
+                    <CellPresenter
+                      onClick={self.clickHandler.bind(self, item)}
+                      isSelected={self.getIsSelected(item)}
+                      cellNumber={item} width={w} height={h} />
                 );
               }
               return (
