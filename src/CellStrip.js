@@ -68,21 +68,27 @@ var CellStripTemplate = function(CellPresenter) {
             }
             return false;
         },
+        renderCell: function(itemId, index, subIndex) {
+          var self = this;
+          var width = self.getWidth(index, subIndex);
+          var height = self.getHeight(index, subIndex);
+          return (
+            <CellPresenter
+              onClick={self.clickHandler.bind(self, itemId)}
+              isSelected={self.getIsSelected(itemId)}
+              cellNumber={itemId} width={width} height={height} />
+          );
+        },
         render: function() {
             var items = this.props.cellNumbers;
             var self = this;
             var innerArea = null;
             var listItems = items.map(function(item, index) {
               if (item.constructor === Array) {
-                var listSubItems = item.map(function(subitem, subIndex) {
-                    var w = self.getWidth(index, subIndex);
-                    var h = self.getHeight(index, subIndex);
+                var listSubItems = item.map(function(subItem, subIndex) {
                     return (
-                        <li key={subitem} className="cell-board-col-li">
-                            <CellPresenter
-                              onClick={self.clickHandler.bind(self, subitem)}
-                              isSelected={self.getIsSelected(subitem)}
-                              cellNumber={subitem} width={w} height={h} />
+                        <li key={subItem} className="cell-board-col-li">
+                            {self.renderCell(subItem, index, subIndex)}
                         </li>
                     );
                 });
@@ -95,14 +101,7 @@ var CellStripTemplate = function(CellPresenter) {
                 );
               }
               else {
-                var w = self.getWidth(index);
-                var h = self.getHeight(index);
-                innerArea = (
-                    <CellPresenter
-                      onClick={self.clickHandler.bind(self, item)}
-                      isSelected={self.getIsSelected(item)}
-                      cellNumber={item} width={w} height={h} />
-                );
+                  innerArea = self.renderCell(item, index, null);
               }
               return (
                 <li key={item} className="cell-board-row-li">
