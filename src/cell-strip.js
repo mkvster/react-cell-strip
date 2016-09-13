@@ -1,8 +1,8 @@
 var React = require('react');
 
 var PlainCell = function(cellAreaClassName, cellNumberClassName) {
-    cellAreaClassName = cellAreaClassName || "cell-area";
-    cellNumberClassName = cellNumberClassName || "cell-number";
+    cellAreaClassName = cellAreaClassName || "cell-strip-cell";
+    cellNumberClassName = cellNumberClassName || "cell-strip-number";
     return React.createClass({
         render: function() {
             var isSelected = this.props.isSelected;
@@ -87,14 +87,15 @@ var CellStripTemplate = function(CellPresenter) {
               if (item.constructor === Array) {
                 var listSubItems = item.map(function(subItem, subIndex) {
                     return (
-                        <li key={subItem} className="cell-board-col-li">
-                            {self.renderCell(subItem, index, subIndex)}
+                        <li key={subItem}
+                          className="cell-strip-column-list-item">
+                          {self.renderCell(subItem, index, subIndex)}
                         </li>
                     );
                 });
                 innerArea = (
                     <div>
-                        <ul className="cell-board-col-ul">
+                        <ul className="cell-strip-column-list">
                           {listSubItems}
                         </ul>
                     </div>
@@ -104,7 +105,7 @@ var CellStripTemplate = function(CellPresenter) {
                   innerArea = self.renderCell(item, index, null);
               }
               return (
-                <li key={item} className="cell-board-row-li">
+                <li key={item} className="cell-strip-row-list-item">
                     {innerArea}
                 </li>
               );
@@ -112,7 +113,7 @@ var CellStripTemplate = function(CellPresenter) {
 
             var rootClassName = this.props.className || "";
             return (
-                <ul className={rootClassName + " cell-board-row-ul"}>
+                <ul className={rootClassName + " cell-strip-row-list"}>
                   {listItems}
                 </ul>
             );

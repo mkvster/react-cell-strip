@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.CellStrip = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.cellStrip = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -8,8 +8,8 @@ Object.defineProperty(exports, "__esModule", {
 var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
 
 var PlainCell = function PlainCell(cellAreaClassName, cellNumberClassName) {
-    cellAreaClassName = cellAreaClassName || "cell-area";
-    cellNumberClassName = cellNumberClassName || "cell-number";
+    cellAreaClassName = cellAreaClassName || "cell-strip-cell";
+    cellNumberClassName = cellNumberClassName || "cell-strip-number";
     return React.createClass({
         render: function render() {
             var isSelected = this.props.isSelected;
@@ -89,7 +89,8 @@ var CellStripTemplate = function CellStripTemplate(CellPresenter) {
                     var listSubItems = item.map(function (subItem, subIndex) {
                         return React.createElement(
                             "li",
-                            { key: subItem, className: "cell-board-col-li" },
+                            { key: subItem,
+                                className: "cell-strip-column-list-item" },
                             self.renderCell(subItem, index, subIndex)
                         );
                     });
@@ -98,7 +99,7 @@ var CellStripTemplate = function CellStripTemplate(CellPresenter) {
                         null,
                         React.createElement(
                             "ul",
-                            { className: "cell-board-col-ul" },
+                            { className: "cell-strip-column-list" },
                             listSubItems
                         )
                     );
@@ -107,7 +108,7 @@ var CellStripTemplate = function CellStripTemplate(CellPresenter) {
                 }
                 return React.createElement(
                     "li",
-                    { key: item, className: "cell-board-row-li" },
+                    { key: item, className: "cell-strip-row-list-item" },
                     innerArea
                 );
             });
@@ -115,7 +116,7 @@ var CellStripTemplate = function CellStripTemplate(CellPresenter) {
             var rootClassName = this.props.className || "";
             return React.createElement(
                 "ul",
-                { className: rootClassName + " cell-board-row-ul" },
+                { className: rootClassName + " cell-strip-row-list" },
                 listItems
             );
         }
